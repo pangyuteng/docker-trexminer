@@ -1,4 +1,8 @@
-FROM etherminer
+FROM nvidia/cuda:10.0-base-ubuntu18.04
+
+RUN apt-get update && apt-get upgrade -yq \
+    && apt-get -qy install software-properties-common \
+    && apt-get -y install curl wget git vim
 
 WORKDIR /opt
 
