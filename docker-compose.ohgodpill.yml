@@ -9,7 +9,7 @@ services:
       - NVIDIA_VISIBLE_DEVICES=all
     runtime: nvidia
     depends_on:
-      - etherminer
+      - trexminer
     privileged: true
     restart: always    
     command: /opt/OhGodAnETHlargementPill/OhGodAnETHlargementPill 
