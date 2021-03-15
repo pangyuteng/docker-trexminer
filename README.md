@@ -8,7 +8,7 @@ cd docker-trexminer
 
 + make sure to check trexminer and CUDA versions in `Dockerfile`.
 
-+ updated `.env` and `docker-compose.yml` to switch coin and pool.
++ updated `.env` and `docker-compose.yml` to switch coin, pool and wallet address!
 
 + run below to start mining.
 
