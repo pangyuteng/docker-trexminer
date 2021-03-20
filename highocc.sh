@@ -9,9 +9,9 @@ do
     then
     printf "%s\n" "found GeForce GTX 1070 at index $i..."
     nvidia-smi -i $i -pm 1
-    nvidia-smi -i $i -pl 100
+    nvidia-smi -i $i -pl 125
     sudo DISPLAY=:0 XAUTHORITY=/run/user/121/gdm/Xauthority nvidia-settings -a [gpu:${i}]/GPUFanControlState=1 -V all
-    sudo DISPLAY=:0 XAUTHORITY=/run/user/121/gdm/Xauthority nvidia-settings -a [fan:${i}]/GPUTargetFanSpeed=60 -V all
+    sudo DISPLAY=:0 XAUTHORITY=/run/user/121/gdm/Xauthority nvidia-settings -a [fan:${i}]/GPUTargetFanSpeed=80 -V all
     sudo DISPLAY=:0 XAUTHORITY=/run/user/121/gdm/Xauthority nvidia-settings -a [gpu:${i}]/GPUGraphicsClockOffset[3]=0 -V all
     sudo DISPLAY=:0 XAUTHORITY=/run/user/121/gdm/Xauthority nvidia-settings -a [gpu:${i}]/GPUMemoryTransferRateOffset[3]=1400 -V all
     elif nvidia-smi -i $i --query-gpu=name --format=csv,noheader,nounits | grep -E "1080" 1> /dev/null
