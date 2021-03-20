@@ -7,21 +7,21 @@ for i in $(seq 0 $index)
 do
     if nvidia-smi -i $i --query-gpu=name --format=csv,noheader,nounits | grep -E "1070" 1> /dev/null
     then
-        printf "%s\n" "found GeForce GTX 1070 at index $i..."
-        nvidia-smi -i $i -pm 1
-        nvidia-smi -i $i -pl 100
-        sudo DISPLAY=:0 XAUTHORITY=/run/user/121/gdm/Xauthority nvidia-settings -a [gpu:${i}]/GPUFanControlState=1
-        sudo DISPLAY=:0 XAUTHORITY=/run/user/121/gdm/Xauthority nvidia-settings -a [gpu:${i}]/GPUTargetFanSpeed=75
-        sudo DISPLAY=:0 XAUTHORITY=/run/user/121/gdm/Xauthority nvidia-settings -a [gpu:${i}]/GPUGraphicsClockOffset[3]=0
-        sudo DISPLAY=:0 XAUTHORITY=/run/user/121/gdm/Xauthority nvidia-settings -a [gpu:${i}]/GPUMemoryTransferRateOffset[3]=1400
+    printf "%s\n" "found GeForce GTX 1070 at index $i..."
+    nvidia-smi -i $i -pm 1
+    nvidia-smi -i $i -pl 100
+    sudo DISPLAY=:0 XAUTHORITY=/run/user/121/gdm/Xauthority nvidia-settings -a [gpu:${i}]/GPUFanControlState=1
+    sudo DISPLAY=:0 XAUTHORITY=/run/user/121/gdm/Xauthority nvidia-settings -a [gpu:${i}]/GPUTargetFanSpeed=75
+    sudo DISPLAY=:0 XAUTHORITY=/run/user/121/gdm/Xauthority nvidia-settings -a [gpu:${i}]/GPUGraphicsClockOffset[3]=0
+    sudo DISPLAY=:0 XAUTHORITY=/run/user/121/gdm/Xauthority nvidia-settings -a [gpu:${i}]/GPUMemoryTransferRateOffset[3]=1400
     elif nvidia-smi -i $i --query-gpu=name --format=csv,noheader,nounits | grep -E "1080" 1> /dev/null
     then 
-        printf "%s\n" "found GeForce GTX 1080 at index $i..."
-        sudo nvidia-smi -i $i -pm 1
-        sudo nvidia-smi -i $i -pl 200
-		sudo DISPLAY=:0 XAUTHORITY=/run/user/125/gdm/Xauthority nvidia-settings -a [gpu:${i}]/GPUFanControlState=1
-		sudo DISPLAY=:0 XAUTHORITY=/run/user/125/gdm/Xauthority nvidia-settings -a [gpu:${i}]/GPUTargetFanSpeed=50
-		sudo DISPLAY=:0 XAUTHORITY=/run/user/125/gdm/Xauthority nvidia-settings -a [gpu:${i}]/GPUGraphicsClockOffset[3]=100
-		sudo DISPLAY=:0 XAUTHORITY=/run/user/125/gdm/Xauthority nvidia-settings -a [gpu:${i}]/GPUMemoryTransferRateOffset[3]=750
+    printf "%s\n" "found GeForce GTX 1080 at index $i..."
+    sudo nvidia-smi -i $i -pm 1
+    sudo nvidia-smi -i $i -pl 200
+    sudo DISPLAY=:0 XAUTHORITY=/run/user/125/gdm/Xauthority nvidia-settings -a [gpu:${i}]/GPUFanControlState=1
+    sudo DISPLAY=:0 XAUTHORITY=/run/user/125/gdm/Xauthority nvidia-settings -a [gpu:${i}]/GPUTargetFanSpeed=50
+    sudo DISPLAY=:0 XAUTHORITY=/run/user/125/gdm/Xauthority nvidia-settings -a [gpu:${i}]/GPUGraphicsClockOffset[3]=100
+    sudo DISPLAY=:0 XAUTHORITY=/run/user/125/gdm/Xauthority nvidia-settings -a [gpu:${i}]/GPUMemoryTransferRateOffset[3]=750
     fi 
 done
