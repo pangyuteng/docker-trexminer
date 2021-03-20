@@ -5,15 +5,16 @@ printf "%s\n" "found ${number_of_gpus[0]} gpu[s]..."
 index=$(( number_of_gpus[0] - 1 ))
 for i in $(seq 0 $index)
 do
+    echo $i
     if nvidia-smi -i $i --query-gpu=name --format=csv,noheader,nounits | grep -E "1070" 1> /dev/null
     then
     printf "%s\n" "found GeForce GTX 1070 at index $i..."
     nvidia-smi -i $i -pm 1
     nvidia-smi -i $i -pl 75
-    sudo DISPLAY=:0 XAUTHORITY=/run/user/121/gdm/Xauthority nvidia-settings -a [gpu:${i}]/GPUFanControlState=1
-    sudo DISPLAY=:0 XAUTHORITY=/run/user/121/gdm/Xauthority nvidia-settings -a [gpu:${i}]/GPUTargetFanSpeed=50
-    sudo DISPLAY=:0 XAUTHORITY=/run/user/121/gdm/Xauthority nvidia-settings -a [gpu:${i}]/GPUGraphicsClockOffset[3]=0
-    sudo DISPLAY=:0 XAUTHORITY=/run/user/121/gdm/Xauthority nvidia-settings -a [gpu:${i}]/GPUMemoryTransferRateOffset[3]=0
+    sudo DISPLAY=:0 XAUTHORITY=/run/user/121/gdm/Xauthority nvidia-settings -V all -a [gpu:${i}]/GPUFanControlState=1
+    sudo DISPLAY=:0 XAUTHORITY=/run/user/121/gdm/Xauthority nvidia-settings -V all -a [fan:${i}]/GPUTargetFanSpeed=50
+    sudo DISPLAY=:0 XAUTHORITY=/run/user/121/gdm/Xauthority nvidia-settings -V all -a [gpu:${i}]/GPUGraphicsClockOffset[3]=0
+    sudo DISPLAY=:0 XAUTHORITY=/run/user/121/gdm/Xauthority nvidia-settings -V all -a [gpu:${i}]/GPUMemoryTransferRateOffset[3]=-200
     elif nvidia-smi -i $i --query-gpu=name --format=csv,noheader,nounits | grep -E "1080" 1> /dev/null
     then 
     printf "%s\n" "found GeForce GTX 1080 at index $i..."

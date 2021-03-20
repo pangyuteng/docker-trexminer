@@ -18,3 +18,17 @@ bash up.sh
 # or with the pill for gtx 1080/ti
 bash up.sh pill
 ```
+
+
+### over-clocking
+
+
++ https://unix.stackexchange.com/questions/200553/multi-nvidia-gpu-overclocking-for-computations-cuda
++ https://gist.github.com/bsodmike/369f8a202c5a5c97cfbd481264d549e9
+
+```
+sudo nvidia-xconfig -a --cool-bits=28 --allow-empty-initial-configuration
+
+
+```
+ 
