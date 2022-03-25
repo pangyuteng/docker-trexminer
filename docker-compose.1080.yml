@@ -4,9 +4,9 @@ services:
     image: trexminer
     build:
       context: .
-      dockerfile: Dockerfile3060
+      dockerfile: Dockerfile1080
     runtime: nvidia
     privileged: true
     restart: always
-    command: /opt/t-rex -a progpow -o stratum+tcp://$POOL1 -u $ETH_WALLET -p x 
+    command: /opt/t-rex -a ethash -o stratum+tcp://$POOL1 -u $ETH_WALLET -p x -w $WORKERNAME
  
