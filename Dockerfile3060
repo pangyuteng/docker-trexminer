@@ -5,3 +5,5 @@ RUN apt-get update && apt-get install wget git vim curl -yq
 WORKDIR /opt
 RUN wget --quiet https://trex-miner.com/download/t-rex-0.25.9-linux.tar.gz && \
     tar -xzf t-rex-0.25.9-linux.tar.gz
+
+    

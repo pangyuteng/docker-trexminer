@@ -8,5 +8,5 @@ services:
     runtime: nvidia
     privileged: true
     restart: always
-    command: /opt/t-rex -a ethash -o stratum+tcp://$POOL1 -u $ETH_WALLET -p x 
+    command: /opt/t-rex -a ethash --dual-algo-mode a12:r10:lr12 -o stratum+tcp://$POOL1 -u $ETH_WALLET -p x 
  
